@@ -1,7 +1,7 @@
 import json
 import requests
 
-url = "https://hooks.slack.com/services/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"
+url = "https://INSERIR-WEBHOOK"
 canal = "#fiap"
 
 def handler(event, context):
