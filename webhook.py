@@ -11,23 +11,23 @@ def handler(event, context):
             return 'Campo vazio : msg'
         texto=event['data']['msg']
         print("Texto = "+ texto)
-        return postMSG_criada_para_o_slack(texto)
+        return postMSG(texto)
         
     except Exception as e:
         erro = "Erro na function: " + repr(e);
         print(erro)
         return erro
     
-def postMSG_criada_para_o_slack(msg):
+def postMSG(msg):
     # format payload for slack
-    sdata = formatForSlack(msg)
+    sdata = format(msg)
     r = requests.post(url, sdata, headers={'Content-Type': 'application/json'})
     if r.status_code == 200:
       return 'SUCCEDED: Sent slack webhook.  Msg = ' + msg
     else:
       return 'FAILED: Send slack webhook'
 
-def formatForSlack(msg):
+def format(msg):
   payload = {
     "channel":canal,
     "username":'ALUNO_Serverless',
